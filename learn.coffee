@@ -9,19 +9,22 @@
 learnRegex = (regex_str) ->
    RegExp(regex_str, "i") 
 
+findRegex = (msg) -> msg.match[1]
+findResp  = (msg) -> msg.match[2]
+
 module.exports = (robot) ->
 
   robot.respond /learn respond (.+) reply (.+)/i, (msg) ->
-    regex = msg.match[1]
-    resp  = msg.match[2]
+    regex = findRegex(msg)
+    resp  = findResp(msg)
 
     msg.send "Learning to respond to " + regex
     robot.respond learnRegex(regex), (msg) ->
       msg.send resp
 
   robot.respond /learn hear (.+) reply (.+)/i, (msg) ->
-    regex = msg.match[1]
-    resp  = msg.match[2]
+    regex = findRegex(msg)
+    resp  = findResp(msg)
 
     msg.send "Learning to hear " + regex
     robot.hear learnRegex(regex), (msg) ->
