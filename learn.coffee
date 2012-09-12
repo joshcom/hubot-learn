@@ -7,7 +7,7 @@
 #   hubot learn hear <regex> reply <query>
 
 learnRegex = (regex_str) ->
-   RegExp(regex_str, "i") 
+  RegExp(regex_str, "i") 
 
 findRegex = (msg) -> msg.match[1]
 findResp  = (msg) -> msg.match[2]
